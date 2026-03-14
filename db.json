@@ -1,19 +1,20 @@
 {
   "categories": [
-    { "id": "cat-1", "name": "Fast Food" },
-    { "id": "cat-2", "name": "Asian" },
-    { "id": "cat-3", "name": "Beverages" }
+    { "id": "cat-1", "name": "Noodles" }
   ],
   "foods": [
-    { "id": "food-1", "name": "Cheeseburger", "price": 899, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=Cheeseburger" },
-    { "id": "food-2", "name": "Chicken Nuggets", "price": 649, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=Chicken+Nuggets" },
-    { "id": "food-3", "name": "French Fries", "price": 399, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=French+Fries" },
-    { "id": "food-4", "name": "Ramen", "price": 1299, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Ramen" },
-    { "id": "food-5", "name": "Pad Thai", "price": 1149, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Pad+Thai" },
-    { "id": "food-6", "name": "Sushi Roll", "price": 1399, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Sushi+Roll" },
-    { "id": "food-7", "name": "Cola", "price": 249, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Cola" },
-    { "id": "food-8", "name": "Iced Coffee", "price": 499, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Iced+Coffee" },
-    { "id": "food-9", "name": "Orange Juice", "price": 399, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Orange+Juice" }
+    { "id": "food-1", "name": "麻辣牛肉麵", "price": 24700, "categoryId": "cat-1", "imageUrl": "https://images.deliveryhero.io/image/menu-import-gateway-prd/regions/AS/chains/dudooeatschain/319e1d46d6fb48719cf3d4ae1662a36e?width=300&height=200" },
+    { "id": "food-2", "name": "麻辣牛肉細粉", "price": 24700, "categoryId": "cat-1", "imageUrl": "https://images.deliveryhero.io/image/menu-import-gateway-prd/regions/AS/chains/dudooeatschain/714ce87d013b09709138fb95bbe97f9a?width=300&height=200" },
+    { "id": "food-3", "name": "麻辣豬肉細粉", "price": 24700, "categoryId": "cat-1", "imageUrl": "https://images.deliveryhero.io/image/menu-import-gateway-prd/regions/AS/chains/dudooeatschain/c60e58f35880a7b1fe12ef901220a63d?width=300&height=200" },
+    { "id": "food-4", "name": "清燉牛肉麵", "price": 21300, "categoryId": "cat-1", "imageUrl": "https://images.deliveryhero.io/image/menu-import-gateway-prd/regions/AS/chains/dudooeatschain/b74f017df593c898181b73032e61c8c7?width=300&height=200" },
+    { "id": "food-5", "name": "炸醬麵", "price": 8900, "categoryId": "cat-1", "imageUrl": "https://images.deliveryhero.io/image/menu-import-gateway-prd/regions/AS/chains/dudooeatschain/bb1decf8f8a9347498f6e57166f2a0f8?width=300&height=200" },
+    { "id": "food-6", "name": "麻醬麵", "price": 8500, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E9%BA%BB%E9%86%AC%E9%BA%B5" },
+    { "id": "food-7", "name": "紅油燃麵", "price": 8500, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E7%B4%85%E6%B2%B9%E7%87%83%E9%BA%B5" },
+    { "id": "food-8", "name": "清燉牛肉細粉", "price": 21300, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E6%B8%85%E7%87%89%E7%89%9B%E8%82%89%E7%B4%B0%E7%B2%89" },
+    { "id": "food-9", "name": "紅燒牛肉麵", "price": 21300, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E7%B4%85%E7%87%92%E7%89%9B%E8%82%89%E9%BA%B5" },
+    { "id": "food-10", "name": "麻辣豬肉麵", "price": 24700, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E9%BA%BB%E8%BE%A3%E8%B1%AC%E8%82%89%E9%BA%B5" },
+    { "id": "food-11", "name": "榨菜肉絲麵", "price": 11900, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E6%A6%A8%E8%8F%9C%E8%82%89%E7%B5%B2%E9%BA%B5" },
+    { "id": "food-12", "name": "排骨麵", "price": 17900, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=%E6%8E%92%E9%AA%A8%E9%BA%B5" }
   ],
   "orders": []
 }
