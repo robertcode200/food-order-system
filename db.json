@@ -1,0 +1,19 @@
+{
+  "categories": [
+    { "id": "cat-1", "name": "Fast Food" },
+    { "id": "cat-2", "name": "Asian" },
+    { "id": "cat-3", "name": "Beverages" }
+  ],
+  "foods": [
+    { "id": "food-1", "name": "Cheeseburger", "price": 899, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=Cheeseburger" },
+    { "id": "food-2", "name": "Chicken Nuggets", "price": 649, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=Chicken+Nuggets" },
+    { "id": "food-3", "name": "French Fries", "price": 399, "categoryId": "cat-1", "imageUrl": "https://placehold.co/300x200?text=French+Fries" },
+    { "id": "food-4", "name": "Ramen", "price": 1299, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Ramen" },
+    { "id": "food-5", "name": "Pad Thai", "price": 1149, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Pad+Thai" },
+    { "id": "food-6", "name": "Sushi Roll", "price": 1399, "categoryId": "cat-2", "imageUrl": "https://placehold.co/300x200?text=Sushi+Roll" },
+    { "id": "food-7", "name": "Cola", "price": 249, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Cola" },
+    { "id": "food-8", "name": "Iced Coffee", "price": 499, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Iced+Coffee" },
+    { "id": "food-9", "name": "Orange Juice", "price": 399, "categoryId": "cat-3", "imageUrl": "https://placehold.co/300x200?text=Orange+Juice" }
+  ],
+  "orders": []
+}
