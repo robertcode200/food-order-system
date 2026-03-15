@@ -114,5 +114,4 @@ Tests intercept HTTP requests at the network level using Mock Service Worker. Co
 - Multi-category tags (many-to-many food–category relationship)
 - Pagination or infinite scroll for large menus
 - Error boundary via `react-error-boundary` — all API errors are already handled by RTK Query's `isError`, but a top-level boundary would catch unexpected render crashes
-- 404 page for unknown routes
 - i18n / locale switching
