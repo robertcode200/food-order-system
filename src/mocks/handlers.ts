@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import type { Category, FoodItem, Order, OrderItem } from '../types'
+import { API_BASE_URL } from '../utils/constants'
 
 const mockCategories: Category[] = [
   { id: '651d473a-ea0e-4337-b1a2-f66caa59977f', name: '麵類' },
@@ -35,11 +36,11 @@ const mockOrders: Order[] = [
 ]
 
 export const handlers = [
-  http.get('http://localhost:3001/categories', () => HttpResponse.json(mockCategories)),
-  http.get('http://localhost:3001/foods', () => HttpResponse.json(mockFoods)),
-  http.get('http://localhost:3001/orders', () => HttpResponse.json(mockOrders)),
+  http.get(`${API_BASE_URL}/categories`, () => HttpResponse.json(mockCategories)),
+  http.get(`${API_BASE_URL}/foods`, () => HttpResponse.json(mockFoods)),
+  http.get(`${API_BASE_URL}/orders`, () => HttpResponse.json(mockOrders)),
 
-  http.post('http://localhost:3001/orders', async ({ request }) => {
+  http.post(`${API_BASE_URL}/orders`, async ({ request }) => {
     const body = (await request.json()) as { items: OrderItem[] }
     const mockOrder: Order = {
       id: 'order-uuid-1',
@@ -50,5 +51,5 @@ export const handlers = [
     return HttpResponse.json(mockOrder, { status: 201 })
   }),
 
-  http.delete('http://localhost:3001/orders', () => new HttpResponse(null, { status: 204 })),
+  http.delete(`${API_BASE_URL}/orders`, () => new HttpResponse(null, { status: 204 })),
 ]
