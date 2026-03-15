@@ -93,9 +93,18 @@ The project uses a hand-written Node.js HTTP server (`server.mjs`) instead of js
 
 Seed data lives in `db.seed.json` (version-controlled). On every server start, `server.mjs` copies it to `db.json` (gitignored). Runtime mutations from using the app never show up in `git status`, and every `npm run dev` starts from a clean slate.
 
-### Testing with MSW
+### Testing strategy
 
-Tests intercept HTTP requests at the network level using Mock Service Worker. Components under test call RTK Query hooks that make real `fetch` calls — MSW intercepts them and returns mock data. No module mocking, no `fetch` spying, and the tests behave the same way as production code. Error states are tested by overriding handlers with `server.use()` on a per-test basis.
+Tests are split into two layers:
+
+- **Unit tests** — Redux slice reducers and memoized selectors are tested in isolation with plain function calls. No DOM, no store, no React rendering. This covers cart add/remove/increment/clear logic, quantity boundaries, and derived values like total and item count.
+- **Integration tests** — Page components are rendered with a real Redux store (`renderWithStore`) and a router. RTK Query hooks fire real `fetch` calls that MSW intercepts at the network level — no module mocking and no `fetch` spying. This tests the full flow from user interaction to store update to DOM output.
+
+Each test file groups cases into **happy path → boundary → edge cases**. Test descriptions read as user-facing behaviors (`'removes the line item when quantity reaches zero'`), not implementation details (`'removeItem reducer works'`). Every test maps to an assignment requirement or a named edge case that protects one.
+
+State is injected via `preloadedState` rather than building up through UI interactions, keeping tests fast and deterministic. Error states are tested by overriding MSW handlers with `server.use()` on a per-test basis.
+
+The commit history follows a test-first workflow — test commits precede their corresponding implementation commits.
 
 ## Bonus Features
 
