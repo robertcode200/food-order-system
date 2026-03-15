@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw'
-import type { Category, FoodItem } from '../types'
+import type { Category, FoodItem, Order, OrderItem } from '../types'
 
 const mockCategories: Category[] = [
   { id: '651d473a-ea0e-4337-b1a2-f66caa59977f', name: '麵類' },
@@ -26,5 +26,15 @@ const mockFoods: FoodItem[] = [
 export const handlers = [
   http.get('http://localhost:3001/categories', () => HttpResponse.json(mockCategories)),
   http.get('http://localhost:3001/foods', () => HttpResponse.json(mockFoods)),
-  // Phase 6+ adds order handlers
+
+  http.post('http://localhost:3001/orders', async ({ request }) => {
+    const body = (await request.json()) as { items: OrderItem[] }
+    const mockOrder: Order = {
+      id: 'order-uuid-1',
+      items: body.items,
+      total: body.items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      submittedAt: '2026-03-14T10:00:00.000Z',
+    }
+    return HttpResponse.json(mockOrder, { status: 201 })
+  }),
 ]
