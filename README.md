@@ -118,7 +118,7 @@ The commit history follows a test-first workflow — test commits precede their 
 ## Future Improvements
 
 - Replace the mock JSON server with a real backend (e.g. Express + PostgreSQL)
-- Deploy to Vercel with environment-based API URL switching
+- Deploy to Vercel with environment-based API URL switching (`VITE_API_URL` replaces the hardcoded localhost base URL)
 - Lazy-load routes with `React.lazy` + `Suspense` for smaller initial bundle
 - Persistent cart via localStorage or server sync
 - Multi-category tags (many-to-many food–category relationship)
