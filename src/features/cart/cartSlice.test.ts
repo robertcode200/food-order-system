@@ -100,5 +100,14 @@ describe('addItem', () => {
       expect(state.items).toHaveLength(1)
       expect(state.items[0].quantity).toBe(3)
     })
+
+    it('two different food items each appear as separate line items', () => {
+      const afterFirst = cartReducer(initialState, addItem(mockBeefNoodle))
+      const state = cartReducer(afterFirst, addItem(mockPorkRiceBowl))
+
+      expect(state.items).toHaveLength(2)
+      expect(state.items[0].foodItemId).toBe('food-uuid-1')
+      expect(state.items[1].foodItemId).toBe('food-uuid-2')
+    })
   })
 })
