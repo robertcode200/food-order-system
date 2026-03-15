@@ -1,0 +1,1 @@
+# pre-push is intentionally empty — pre-commit already runs lint-staged, tsc, and tests
