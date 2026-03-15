@@ -1,15 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import cartReducer from '../features/cart/cartSlice'
 
-// Phase 2 will add api.reducer and cartReducer here
-const reducer = {}
+const rootReducer = combineReducers({
+  cart: cartReducer,
+})
 
-export const store = configureStore({ reducer })
+export type RootState = ReturnType<typeof rootReducer>
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-
-// Fresh store per test — prevents state leaking between tests
 export const setupStore = (preloadedState?: Partial<RootState>) =>
-  configureStore({ reducer, preloadedState })
+  configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  })
+
+export const store = setupStore()
 
 export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = typeof store.dispatch
