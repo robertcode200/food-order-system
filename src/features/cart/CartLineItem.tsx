@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -14,7 +14,7 @@ type Props = {
   cartItem: CartItem
 }
 
-const CartLineItem = React.memo(function CartLineItem({ cartItem }: Props) {
+const CartLineItem = memo(function CartLineItem({ cartItem }: Props) {
   const dispatch = useAppDispatch()
 
   return (
