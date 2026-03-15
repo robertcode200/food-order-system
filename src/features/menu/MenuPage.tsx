@@ -28,7 +28,9 @@ export default function MenuPage() {
 
   if (isLoading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}
+      >
         <CircularProgress />
       </Box>
     )
@@ -36,7 +38,9 @@ export default function MenuPage() {
 
   if (isError || !data) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}
+      >
         <Typography color="error">無法載入菜單，請稍後再試。</Typography>
       </Box>
     )

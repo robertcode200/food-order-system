@@ -1,3 +1,4 @@
+import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -8,11 +9,13 @@ import OrderCard from './OrderCard'
 
 export default function HistoryPage() {
   const { data: orders = [], isLoading, isError } = useGetOrdersQuery()
-  const [clearOrders] = useClearOrdersMutation()
+  const [clearOrders, { isError: isClearError }] = useClearOrdersMutation()
 
   if (isLoading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}
+      >
         <CircularProgress />
       </Box>
     )
@@ -20,7 +23,9 @@ export default function HistoryPage() {
 
   if (isError) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}
+      >
         <Typography color="error">無法載入訂單記錄，請稍後再試。</Typography>
       </Box>
     )
@@ -45,6 +50,11 @@ export default function HistoryPage() {
           清除歷史
         </Button>
       </Box>
+      {isClearError && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          清除歷史失敗，請再試一次。
+        </Alert>
+      )}
       {[...orders].reverse().map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}

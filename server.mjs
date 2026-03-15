@@ -1,12 +1,15 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { copyFileSync, readFileSync, writeFileSync } from 'node:fs'
 import { randomUUID } from 'node:crypto'
 import { createServer } from 'node:http'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const SEED_PATH = join(__dirname, 'db.seed.json')
 const DB_PATH = join(__dirname, 'db.json')
 const PORT = 3001
+
+copyFileSync(SEED_PATH, DB_PATH)
 
 function readDb() {
   return JSON.parse(readFileSync(DB_PATH, 'utf-8'))

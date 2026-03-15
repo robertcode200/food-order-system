@@ -26,6 +26,7 @@ const FoodItemCard = memo(function FoodItemCard({ foodItem }: Props) {
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardMedia
         component="img"
+        loading="lazy"
         image={imgSrc}
         alt={foodItem.name}
         sx={{ aspectRatio: '4/3', objectFit: 'cover' }}

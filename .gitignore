@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Runtime database (regenerated from db.seed.json on server start)
+db.json
+
 # Cursor IDE internal files
 .cursor/

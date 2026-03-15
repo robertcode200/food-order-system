@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest'
 import cartReducer, {
   addItem,
   incrementItem,
@@ -29,9 +28,9 @@ const mockPorkRiceBowl: FoodItem = {
   imageUrl: 'https://example.com/pork-rice.jpg',
 }
 
-// ----------------------------------------------------------
+// ----
 // incrementItem
-// ----------------------------------------------------------
+// ----
 describe('incrementItem', () => {
   describe('happy path', () => {
     it('increases quantity by 1 for an existing cart item', () => {
@@ -56,9 +55,9 @@ describe('incrementItem', () => {
   })
 })
 
-// ----------------------------------------------------------
+// ----
 // clearItem
-// ----------------------------------------------------------
+// ----
 describe('clearItem', () => {
   describe('happy path', () => {
     it('removes the item entirely when quantity is 1', () => {
@@ -103,9 +102,9 @@ describe('clearItem', () => {
   })
 })
 
-// ----------------------------------------------------------
+// ----
 // clearCart
-// ----------------------------------------------------------
+// ----
 describe('clearCart', () => {
   describe('happy path', () => {
     it('empties all items after order is submitted', () => {
@@ -131,9 +130,9 @@ describe('clearCart', () => {
   })
 })
 
-// ----------------------------------------------------------
+// ----
 // toggleCart / setIsCartOpen
-// ----------------------------------------------------------
+// ----
 describe('toggleCart', () => {
   describe('happy path', () => {
     it('opens the cart when it is closed', () => {
@@ -164,9 +163,9 @@ describe('setIsCartOpen', () => {
   })
 })
 
-// ----------------------------------------------------------
+// ----
 // removeItem
-// ----------------------------------------------------------
+// ----
 describe('removeItem', () => {
   describe('happy path', () => {
     it('decreases quantity by 1 when the item has more than one', () => {
@@ -215,9 +214,9 @@ describe('removeItem', () => {
   })
 })
 
-// ----------------------------------------------------------
+// ----
 // addItem
-// ----------------------------------------------------------
+// ----
 describe('addItem', () => {
   describe('happy path', () => {
     it('adds a new food item to the cart with quantity 1', () => {

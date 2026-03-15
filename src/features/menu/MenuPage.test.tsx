@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { http, HttpResponse } from 'msw'
 import { server } from '../../mocks/server'
 import { renderWithStore } from '../../test-utils'
+import { API_BASE_URL } from '../../utils/constants'
 import { formatPrice } from '../../utils/formatPrice'
 import MenuPage from './MenuPage'
 
@@ -138,7 +139,7 @@ describe('MenuPage', () => {
     })
 
     it('shows error message when API fails', async () => {
-      server.use(http.get('http://localhost:3001/categories', () => HttpResponse.error()))
+      server.use(http.get(`${API_BASE_URL}/categories`, () => HttpResponse.error()))
       renderWithStore(<MenuPage />)
 
       await screen.findByText('無法載入菜單，請稍後再試。')
