@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest'
 import { selectCartTotal, selectCartCount } from './cartSelectors'
 import type { RootState } from '../../app/store'
 import type { CartItem } from '../../types'
