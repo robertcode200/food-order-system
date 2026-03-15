@@ -103,6 +103,7 @@ Tests intercept HTTP requests at the network level using Mock Service Worker. Co
 - **Dedicated history page** — order history lives on its own route (`/history`) with per-order cards showing timestamp, items, and total
 - **Category-based menu filtering** — chip toggles filter the food grid by category
 - **Image fallback system** — broken or missing food images gracefully fall back to a local SVG placeholder with zero network dependency
+- **Native image lazy loading** — food card images use `loading="lazy"` so off-screen images are deferred until the user scrolls near them, reducing initial page load
 - **Pre-commit quality gate** — every commit passes Prettier, ESLint, TypeScript type checking, and the full test suite via Husky + lint-staged
 
 ## Future Improvements
