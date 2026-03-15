@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 import { setupStore, type AppStore, type RootState } from './app/store'
 
-interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+type ExtendedRenderOptions = Omit<RenderOptions, 'queries'> & {
   preloadedState?: Partial<RootState>
   store?: AppStore
 }

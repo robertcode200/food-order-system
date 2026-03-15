@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import cartReducer, {
   addItem,
+  incrementItem,
   removeItem,
   clearItem,
   clearCart,
@@ -27,6 +28,33 @@ const mockPorkRiceBowl: FoodItem = {
   categoryId: 'cat-uuid-2',
   imageUrl: 'https://example.com/pork-rice.jpg',
 }
+
+// ----------------------------------------------------------
+// incrementItem
+// ----------------------------------------------------------
+describe('incrementItem', () => {
+  describe('happy path', () => {
+    it('increases quantity by 1 for an existing cart item', () => {
+      const withOne = cartReducer(initialState, addItem(mockBeefNoodle))
+      const itemId = withOne.items[0].id
+
+      const state = cartReducer(withOne, incrementItem(itemId))
+
+      expect(state.items[0].quantity).toBe(2)
+    })
+  })
+
+  describe('edge cases', () => {
+    it('does nothing when the item id does not exist in the cart', () => {
+      const withOne = cartReducer(initialState, addItem(mockBeefNoodle))
+
+      const state = cartReducer(withOne, incrementItem('non-existent-id'))
+
+      expect(state.items).toHaveLength(1)
+      expect(state.items[0].quantity).toBe(1)
+    })
+  })
+})
 
 // ----------------------------------------------------------
 // clearItem

@@ -50,6 +50,12 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.payload)
       }
     },
+    incrementItem: (state, action: PayloadAction<string>) => {
+      const existing = state.items.find((item) => item.id === action.payload)
+      if (existing) {
+        existing.quantity += 1
+      }
+    },
     clearItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
@@ -59,7 +65,14 @@ const cartSlice = createSlice({
   },
 })
 
-export const { toggleCart, setIsCartOpen, addItem, removeItem, clearItem, clearCart } =
-  cartSlice.actions
+export const {
+  toggleCart,
+  setIsCartOpen,
+  addItem,
+  incrementItem,
+  removeItem,
+  clearItem,
+  clearCart,
+} = cartSlice.actions
 
 export default cartSlice.reducer
