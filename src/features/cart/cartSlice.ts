@@ -15,8 +15,12 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    toggleCart: () => {},
-    setIsCartOpen: (_state, _action: PayloadAction<boolean>) => {},
+    toggleCart: (state) => {
+      state.isCartOpen = !state.isCartOpen
+    },
+    setIsCartOpen: (state, action: PayloadAction<boolean>) => {
+      state.isCartOpen = action.payload
+    },
     addItem: {
       prepare: (food: FoodItem) => ({
         payload: {
@@ -46,8 +50,12 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.payload)
       }
     },
-    clearItem: (_state, _action: PayloadAction<string>) => {},
-    clearCart: () => {},
+    clearItem: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter((item) => item.id !== action.payload)
+    },
+    clearCart: (state) => {
+      state.items = []
+    },
   },
 })
 
