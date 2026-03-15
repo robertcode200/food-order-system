@@ -20,6 +20,8 @@ export default function MenuPage() {
       : foods.filter((f) => f.categoryId === selectedCategoryId)
   }, [data?.foods, selectedCategoryId])
 
+  // No useCallback — Chip receives this via an inline wrapper (() => handleChipClick(id)),
+  // so stabilising the reference here does not prevent the child from seeing a new function.
   const handleChipClick = (categoryId: string | null) => {
     setSelectedCategoryId((prev) => (prev === categoryId ? null : categoryId))
   }
