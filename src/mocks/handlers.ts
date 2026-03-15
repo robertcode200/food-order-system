@@ -23,9 +23,21 @@ const mockFoods: FoodItem[] = [
   },
 ]
 
+const mockOrders: Order[] = [
+  {
+    id: 'order-uuid-1',
+    items: [
+      { foodItemId: 'food-uuid-1', name: '麻辣牛肉麵', price: 247, imageUrl: '', quantity: 2 },
+    ],
+    total: 494,
+    submittedAt: '2026-03-14T10:00:00.000Z',
+  },
+]
+
 export const handlers = [
   http.get('http://localhost:3001/categories', () => HttpResponse.json(mockCategories)),
   http.get('http://localhost:3001/foods', () => HttpResponse.json(mockFoods)),
+  http.get('http://localhost:3001/orders', () => HttpResponse.json(mockOrders)),
 
   http.post('http://localhost:3001/orders', async ({ request }) => {
     const body = (await request.json()) as { items: OrderItem[] }
@@ -37,4 +49,6 @@ export const handlers = [
     }
     return HttpResponse.json(mockOrder, { status: 201 })
   }),
+
+  http.delete('http://localhost:3001/orders', () => new HttpResponse(null, { status: 204 })),
 ]
