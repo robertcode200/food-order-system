@@ -106,6 +106,22 @@ State is injected via `preloadedState` rather than building up through UI intera
 
 The commit history follows a test-first workflow — test commits precede their corresponding implementation commits.
 
+#### Manual verification
+
+All critical user flows were verified in a browser environment via Chrome DevTools MCP:
+
+| Flow                                                        | Verified |
+| ----------------------------------------------------------- | -------- |
+| Menu loads with categories and food cards                   | ✓        |
+| Category chip filters foods correctly                       | ✓        |
+| Adding items updates cart badge and dropdown                | ✓        |
+| Same item added twice increases quantity (no duplicate row) | ✓        |
+| Checkout shows cart items with quantity controls and total  | ✓        |
+| Submit order → cart clears → navigates to history           | ✓        |
+| Order card shows timestamp, items summary, and total        | ✓        |
+| Clear history empties the list                              | ✓        |
+| Unknown routes show 404 page with navigation preserved      | ✓        |
+
 ## Bonus Features
 
 - **Backend-persisted order history** — orders are stored on the server via `POST /orders` and retrieved with `GET /orders`, surviving page refreshes
