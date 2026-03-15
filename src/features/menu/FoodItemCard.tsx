@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
@@ -15,7 +15,7 @@ type Props = {
   foodItem: FoodItem
 }
 
-export default function FoodItemCard({ foodItem }: Props) {
+const FoodItemCard = memo(function FoodItemCard({ foodItem }: Props) {
   const dispatch = useAppDispatch()
   // State is needed so onError can swap to the fallback —
   // a read-only prop cannot be changed from inside the component.
@@ -51,4 +51,6 @@ export default function FoodItemCard({ foodItem }: Props) {
       </CardActions>
     </Card>
   )
-}
+})
+
+export default FoodItemCard

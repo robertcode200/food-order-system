@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import Typography from '@mui/material/Typography'
@@ -12,6 +12,17 @@ import FoodItemCard from './FoodItemCard'
 export default function MenuPage() {
   const { data, isLoading, isError } = useGetMenuQuery()
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
+
+  const filteredFoods = useMemo(() => {
+    const foods = data?.foods ?? []
+    return selectedCategoryId === null
+      ? foods
+      : foods.filter((f) => f.categoryId === selectedCategoryId)
+  }, [data?.foods, selectedCategoryId])
+
+  const handleChipClick = (categoryId: string | null) => {
+    setSelectedCategoryId((prev) => (prev === categoryId ? null : categoryId))
+  }
 
   if (isLoading) {
     return (
@@ -29,20 +40,14 @@ export default function MenuPage() {
     )
   }
 
-  const { categories, foods } = data
-  const filteredFoods =
-    selectedCategoryId === null ? foods : foods.filter((f) => f.categoryId === selectedCategoryId)
-
-  const handleChipClick = (categoryId: string | null) => {
-    setSelectedCategoryId((prev) => (prev === categoryId ? null : categoryId))
-  }
+  const { categories } = data
 
   return (
     <Container component="main" maxWidth="lg" sx={{ py: 4 }}>
       <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 3 }}>
         <Chip
           label="全部"
-          onClick={() => setSelectedCategoryId(null)}
+          onClick={() => handleChipClick(null)}
           color={selectedCategoryId === null ? 'primary' : 'default'}
           variant={selectedCategoryId === null ? 'filled' : 'outlined'}
         />
