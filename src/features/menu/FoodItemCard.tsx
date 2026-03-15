@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
@@ -7,6 +8,7 @@ import Button from '@mui/material/Button'
 import { useAppDispatch } from '../../app/hooks'
 import { addItem } from '../cart/cartSlice'
 import { formatPrice } from '../../utils/formatPrice'
+import { FALLBACK_IMAGE_URL } from '../../utils/constants'
 import type { FoodItem } from '../../types'
 
 type Props = {
@@ -15,14 +17,19 @@ type Props = {
 
 export default function FoodItemCard({ foodItem }: Props) {
   const dispatch = useAppDispatch()
+  // State is needed so onError can swap to the fallback —
+  // a read-only prop cannot be changed from inside the component.
+  // Initialising with || FALLBACK_IMAGE_URL avoids a network round-trip for items with no imageUrl.
+  const [imgSrc, setImgSrc] = useState(foodItem.imageUrl || FALLBACK_IMAGE_URL)
 
   return (
     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardMedia
         component="img"
-        image={foodItem.imageUrl}
+        image={imgSrc}
         alt={foodItem.name}
         sx={{ aspectRatio: '4/3', objectFit: 'cover' }}
+        onError={() => setImgSrc(FALLBACK_IMAGE_URL)}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography
