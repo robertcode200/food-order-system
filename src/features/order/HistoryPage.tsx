@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -10,6 +11,7 @@ import OrderCard from './OrderCard'
 export default function HistoryPage() {
   const { data: orders = [], isLoading, isError } = useGetOrdersQuery()
   const [clearOrders, { isError: isClearError }] = useClearOrdersMutation()
+  const reversedOrders = useMemo(() => [...orders].reverse(), [orders])
 
   if (isLoading) {
     return (
@@ -55,7 +57,7 @@ export default function HistoryPage() {
           清除歷史失敗，請再試一次。
         </Alert>
       )}
-      {[...orders].reverse().map((order) => (
+      {reversedOrders.map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}
     </Container>
