@@ -129,13 +129,13 @@ All critical user flows were verified in a browser environment via Chrome DevToo
 - **Category-based menu filtering** — chip toggles filter the food grid by category
 - **Image fallback system** — broken or missing food images gracefully fall back to a local SVG placeholder with zero network dependency
 - **Native image lazy loading** — food card images use `loading="lazy"` so off-screen images are deferred until the user scrolls near them, reducing initial page load
+- **Route-level code splitting** — page components are lazy-loaded via `React.lazy` + per-route `Suspense` boundaries, so each route is a separate chunk fetched on demand (MenuPage 19.8 kB, HistoryPage 1.95 kB, CheckoutPage 1.39 kB gzipped)
 - **Pre-commit quality gate** — every commit passes Prettier, ESLint, TypeScript type checking, and the full test suite via Husky + lint-staged
 
 ## Future Improvements
 
 - Replace the mock JSON server with a real backend (e.g. Express + PostgreSQL)
 - Deploy to Vercel with environment-based API URL switching (`VITE_API_URL` replaces the hardcoded localhost base URL)
-- Lazy-load routes with `React.lazy` + `Suspense` for smaller initial bundle
 - Persistent cart via localStorage or server sync
 - Multi-category tags (many-to-many food–category relationship)
 - Pagination or infinite scroll for large menus
