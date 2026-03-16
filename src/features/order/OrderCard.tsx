@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
@@ -10,7 +11,7 @@ type Props = {
   order: Order
 }
 
-export default function OrderCard({ order }: Props) {
+const OrderCard = memo(function OrderCard({ order }: Props) {
   return (
     <Card sx={{ mb: 2 }}>
       <CardContent>
@@ -29,4 +30,6 @@ export default function OrderCard({ order }: Props) {
       </CardContent>
     </Card>
   )
-}
+})
+
+export default OrderCard
